@@ -4,9 +4,9 @@ import common.Purchase;
 
 public abstract class ApproverWithLimit extends Approver {
 
-    public abstract int limitFor(Purchase purchase);
+    protected abstract int limitFor(Purchase purchase);
 
-    public boolean canApprove(Purchase purchase) {
+    protected boolean canApprove(Purchase purchase) {
         return purchase.getCost() <= this.limitFor(purchase);
     }
 
@@ -17,7 +17,7 @@ public abstract class ApproverWithLimit extends Approver {
             return;
         }
 
-        System.out.println(purchase + " needs approval from higher a position than " + this);
+        System.out.println(purchase + " needs approval from a higher position than " + this);
         next.approve(purchase);
     }
 }
